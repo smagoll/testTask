@@ -91,7 +91,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 683497936820823238}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4813242827279156673}
+        m_TargetAssemblyTypeName: ItemTicket, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &683497936820823238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +644,7 @@ GameObject:
   - component: {fileID: 7284033820524096198}
   - component: {fileID: 3439628949003918575}
   - component: {fileID: 5397124852274926254}
+  - component: {fileID: 4813242827279156673}
   m_Layer: 5
   m_Name: ItemForTicket
   m_TagString: Untagged
@@ -691,6 +704,28 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 3286163911610860551, guid: 0110ea40aba72e447bf4193603c69fa8, type: 3}
   m_PreserveAspect: 1
+--- !u!114 &4813242827279156673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688599042710790950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f860b7074a3a70246b52b002f6c69b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockItem: {fileID: 1578483680890755869}
+  iconItem: {fileID: 6069280612425255235}
+  textTickets: {fileID: 8436005271759021682}
+  textLevelItem: {fileID: 2774723931048768318}
+  textNameItem: {fileID: 2709212539795624467}
+  nameItem: name
+  needLevel: 0
+  needTickets: 0
+  buttonBuy: {fileID: 8655429556137514935}
+  isSale: 0
 --- !u!1 &6069280612425255235
 GameObject:
   m_ObjectHideFlags: 0
