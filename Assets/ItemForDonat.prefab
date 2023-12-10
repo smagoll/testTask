@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 8238660267380325247}
   - component: {fileID: 949407909188050202}
   - component: {fileID: 1623030581249933037}
+  - component: {fileID: 8674870460686372578}
   m_Layer: 5
   m_Name: button_buy
   m_TagString: Untagged
@@ -381,6 +382,46 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 3286163911610860551, guid: fe934a58a02f82044b95b73f142f72e6, type: 3}
   m_PreserveAspect: 1
+--- !u!114 &8674870460686372578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5840310662864974044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b79b5624d944058bd39aad2b90fb275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: 
+  buttonType: 0
+  consumePurchase: 1
+  onTransactionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1703129041582650038}
+        m_TargetAssemblyTypeName: ItemDonat, Assembly-CSharp
+        m_MethodName: BuyTickets
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  onProductFetched:
+    m_PersistentCalls:
+      m_Calls: []
+  button: {fileID: 949407909188050202}
 --- !u!1 &6156573659693345725
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e939ad49a796144b92699788526f38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countTickets: 0
 --- !u!1 &8583821450014195319
 GameObject:
   m_ObjectHideFlags: 0

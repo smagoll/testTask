@@ -1,18 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Purchasing;
 
 public class ItemDonat : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private int countTickets;
 
-    // Update is called once per frame
-    void Update()
+    public void BuyTickets(Product product)
     {
-        
+        GameManager.Tickets += Convert.ToInt32(product.definition.payout.quantity);
     }
 }

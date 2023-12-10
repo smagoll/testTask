@@ -13,7 +13,11 @@ public class ItemTicket : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI textLevelItem;
     [SerializeField]
+    private GameObject price;
+    [SerializeField]
     private TextMeshProUGUI textNameItem;
+    [SerializeField]
+    private GameObject iconPurchased;
     [SerializeField]
     private string nameItem;
     [SerializeField]
@@ -50,6 +54,14 @@ public class ItemTicket : MonoBehaviour
             if (isHave)
             {
                 buttonBuy.interactable = false;
+                iconPurchased.SetActive(true);
+                price.SetActive(false);
+            }
+            else
+            {
+                buttonBuy.interactable = true;
+                iconPurchased.SetActive(false);
+                price.SetActive(true);
             }
         }
     }
@@ -75,7 +87,7 @@ public class ItemTicket : MonoBehaviour
 
     public void BuyItem()
     {
-        if (needTickets <= GameManager.Tickets)
+        if (needTickets <= GameManager.Tickets && IsOpen)
         {
             GameManager.Tickets -= needTickets;
             IsHave = true;
