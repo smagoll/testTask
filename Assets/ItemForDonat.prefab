@@ -641,7 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e939ad49a796144b92699788526f38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countTickets: 0
+  countTickets: {fileID: 9174379791683942734}
+  itemName: {fileID: 5313417161315411031}
+  iapButton: {fileID: 5840310662864974044}
 --- !u!1 &8583821450014195319
 GameObject:
   m_ObjectHideFlags: 0
