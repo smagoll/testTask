@@ -9,43 +9,42 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private EventSystem eventSystem;
     [SerializeField]
-    private GameObject menu;
+    private WindowManager menu;
     [SerializeField]
-    private GameObject dailyBonus;
+    private WindowManager dailyBonus;
     [SerializeField]
-    private GameObject settings;
+    private WindowManager settings;
     [SerializeField]
-    private GameObject levels;
+    private WindowManager levels;
     [SerializeField]
-    private GameObject shop;
+    private WindowManager shop;
     [SerializeField]
     private GameObject fadeImage;
 
     [SerializeField]
-    private GameObject currentWindow;
+    private WindowManager currentWindow;
 
     [SerializeField]
     private GraphicRaycaster m_Raycaster;
     private PointerEventData m_PointerEventData;
 
-    public void OpenWindow(GameObject window)
+    public void OpenWindow(WindowManager window)
     {
-        window.SetActive(true);
-        currentWindow.SetActive(false);
+        window.Enable();
+        currentWindow.Disable();
         currentWindow = window;
     }
 
-    public void ShowWindow(GameObject window)
+    public void ShowWindow(WindowManager window)
     {
-        window.SetActive(true);
-        fadeImage.SetActive(true);
+        window.Enable();
         currentWindow = window;
     }
 
     public void ButtonHome()
     {
-        currentWindow.SetActive(false);
-        menu.SetActive(true);
+        currentWindow.Disable();
+        menu.Enable();
         currentWindow = menu;
     }
 
@@ -64,8 +63,7 @@ public class UIController : MonoBehaviour
             {
                 if (results[0].gameObject.CompareTag("fade"))
                 {
-                    currentWindow.SetActive(false);
-                    fadeImage.SetActive(false);
+                    currentWindow.Disable();
                     currentWindow = menu;
                 }
             }

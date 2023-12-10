@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,6 +26,8 @@ public class DayBonus : MonoBehaviour
     private bool isComplete = false;
     private bool isAccess = false;
 
+    private Tweener tweenerShake;
+
     public bool IsComplete
     {
         get { return isComplete; }
@@ -35,6 +38,7 @@ public class DayBonus : MonoBehaviour
             {
                 button.interactable = false;
                 svgImage.color = colorComplete;
+                tweenerShake.Pause();
             }
         }
     }
@@ -48,10 +52,12 @@ public class DayBonus : MonoBehaviour
             if (isAccess)
             {
                 button.interactable = true;
+                tweenerShake.Play();
             }
             else
             {
                 button.interactable = false;
+                tweenerShake.Pause();
             }
         }
     }
@@ -60,6 +66,9 @@ public class DayBonus : MonoBehaviour
     {
         textNumberDay.text = $"DAY{numberDay}";
         textCountTickets.text = $"X{countTicket}";
+
+        tweenerShake = transform.DOShakePosition(1f, 0.5f).SetLoops(-1);
+        tweenerShake.Pause();
     }
 
     public void TakeBonus()

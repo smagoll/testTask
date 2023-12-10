@@ -1,12 +1,16 @@
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
-public class DailyBonus : MonoBehaviour
+public class DailyBonus : WindowManager
 {
     [SerializeField]
     private GameObject giftBonusWindow;
     [SerializeField]
     private GameObject dailyBonusWindow;
+    [SerializeField]
+    private Image fade;
     [SerializeField]
     private GiftBonus gift;
     [SerializeField]
@@ -48,7 +52,7 @@ public class DailyBonus : MonoBehaviour
 
     public void TransitionToNextDay()
     {
-        if (currentDay <= maxDays-1)
+        if (currentDay < maxDays)
         {
             var dayBonus = daysBonus.Where(x => x.numberDay == currentDay).ToArray().FirstOrDefault();
             dayBonus.IsAccess = true;
@@ -62,30 +66,61 @@ public class DailyBonus : MonoBehaviour
 
     private void OnDisable()
     {
+        
         giftBonusWindow.SetActive(false);
         dailyBonusWindow.SetActive(true);
 
-        if (CurrentDay == maxDays)
+        if (CurrentDay < maxDays)
         {
-            return;
+            CurrentDay++;
         }
-        CurrentDay++;
     }
 
     private void OnEnable()
     {
+        
         TransitionToNextDay();
         GlobalEventManager.Start_UpdateProgressBar(currentDay);
     }
 
     private void ResetWeeklyBonus()
     {
-        CurrentDay = 1;
+        gift.IsAccess = false;
+        CurrentDay = 0;
         foreach (var day in daysBonus)
         {
             day.ResetColor();
             day.IsAccess = false;
         }
         return;
+    }
+
+    public override void Disable()
+    {
+        var sequence = DOTween.Sequence();
+        fade.raycastTarget = false;
+
+        sequence.Append(transform.DOScale(new Vector3(0f, 0f, 0f), 0.3f));
+        sequence.AppendCallback(() =>
+        {
+            gameObject.SetActive(false);
+            fade.gameObject.SetActive(false);
+            sequence.Kill();
+        });
+    }
+
+    public override void Enable()
+    {
+        transform.localScale = new Vector3(0,0,0);
+        var sequence = DOTween.Sequence();
+        gameObject.SetActive(true);
+        fade.gameObject.SetActive(true);
+        fade.raycastTarget = true;
+
+        sequence.Append(transform.DOScale(new Vector3(1, 1, 1), 0.3f));
+        sequence.AppendCallback(() =>
+        {
+            sequence.Kill();
+        });
     }
 }

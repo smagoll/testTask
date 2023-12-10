@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelsManager : MonoBehaviour
+public class LevelsManager : WindowManager
 {
     public Level[] levels;
 
@@ -36,5 +36,15 @@ public class LevelsManager : MonoBehaviour
                 levels[GameManager.currentLevel - 1].IsComplete = true;
             }
         }
+    }
+
+    public override void Disable()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public override void Enable()
+    {
+        gameObject.SetActive(true);
     }
 }

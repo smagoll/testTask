@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopManager : WindowManager
+
+
+public class WindowManager : MonoBehaviour, ISwitch
 {
-    public override void Disable()
+    public virtual void Disable()
     {
         gameObject.SetActive(false);
     }
-
-    public override void Enable()
+    public virtual void Enable()
     {
         gameObject.SetActive(true);
     }
+
 }
